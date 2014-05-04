@@ -145,13 +145,27 @@ input[type="text"], textarea {
 	border: 1px;
 }
 
+.fantasy-timer {
+	align: right;
+}
+
+.levels {
+	position: fixed;
+	z-index: -20;
+}
+
 </style>
 
 </head>
 <body>
-<div class="row" id='mySwipe' style='max-width:100%;margin:0 auto' class='swipe'>
+	<div class="col-md-4 levels">
+  		<p>Data:</p>
+  		<canvas id="levels" width="100" height="100%"></canvas>
+  	</div>
+<div id='mySwipe' style='max-width:80%;margin:0 auto' class='swipe'>
   <div class='row swipe-wrap'>
-    <div class="col-md-12">
+
+    <div class="col-md-8">
     	<div class="row center-block center">
     		<center>
     			<img src="img/happy.png" />
@@ -162,7 +176,7 @@ input[type="text"], textarea {
     		<button class="btn-main" onclick='mySwipe.prev()' >STAY HERE</button>
     	</div>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-8">
 	    <div class="row center-block center">
     		<center>
     			<img src="img/happy.png" />
@@ -183,47 +197,28 @@ input[type="text"], textarea {
     		<button class="btn-main btn-submit" onclick='mySwipe.next()'>SAVE</button>
 	    </div>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-8">
     	<div class="row center-block center">
     		<center>
     			<img src="img/happy.png" />
     			<p class="question-text text-center">Take 30-seconds to practice gratitude.</p>
-    			<canvas id="timer1" width="400" height="400"style="z-index:20"></canvas>
+    			<canvas id="gratitudeTimer" width="400" height="400"style="z-index:20"></canvas>
     			<br />
     			<button type="submit" class="btn btn-main btn-submit" onclick='mySwipe.next()'>CONTINUE</button>
-			    <script>
-					var canvas = document.getElementById('timer1');
-					var context = canvas.getContext('2d');
-					var x = canvas.width / 2;
-					var y = canvas.height / 2;
-					var radius = 150;
-					var startAngle = 1.5 * Math.PI;
-					var endAngle = 0.3 * Math.PI;
-					var counterClockwise = false;
-
-					context.beginPath();
-					context.arc(x, y, radius, startAngle, endAngle, counterClockwise);
-					context.lineWidth = 15;
-
-					// line color
-					context.strokeStyle = 'white';
-					context.stroke();
-					context.closePath();
-
-					context.beginPath();
-					context.arc(x, y, radius, 0, 2 * Math.PI, counterClockwise);
-					context.lineWidth = 1;
-					context.stroke();
-			    </script>
     		<center>
     	</div>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-8">
     	<div class="row center-block center">
     	<center>
-			<img src="img/happy.png" />
-			<p class="question-text text-center">Please fantasize. Take 300-seconds to imagine the ultimate dream life.</p>
-			<p class="question-text text-center subhead">No logic. List everything you want to happen.</p>
+    		<div class="col-md-4">
+				<img src="img/happy.png" />
+				<p class="question-text text-center">Please fantasize. Take 300-seconds to imagine the ultimate dream life.</p>
+				<p class="question-text text-center subhead">No logic. List everything you want to happen.</p>
+			</div>
+			<div class="col-md-4 fantasy-timer">
+				<canvas id="fantasyTimer" width="100" height="100"></canvas>
+			</div>
     	<center>
 				<div class="form-group">
 	    		<textarea class="single-field note-field" type="text" class="form-control" id="fantasy" placeholder="enter dream"></textarea>
@@ -232,43 +227,20 @@ input[type="text"], textarea {
 			<button class="btn-main btn-submit" onclick='mySwipe.next()'>SAVE</button>
 		</div>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-8">
     	<div class="row center-block center">
     		<center>
     			<img src="img/happy.png" />
     			<p class="question-text text-center">Move. Jump up and down. Dance.</p>
     			<p class="question-text text-center subhead">Practice expecting this future for 20-seconds. Visualize it. How it feels. How you move.</p>
-    			<canvas id="timer2" width="400" height="400"style="z-index:20"></canvas>
+    			<canvas id="jumpTimer" width="400" height="400"style="z-index:20"></canvas>
     			<br />
     			<button type="submit" class="btn btn-main btn-submit" onclick='mySwipe.next()'>CONTINUE</button>
-			    <script>
-					var canvas = document.getElementById('timer2');
-					var context = canvas.getContext('2d');
-					var x = canvas.width / 2;
-					var y = canvas.height / 2;
-					var radius = 150;
-					var startAngle = 1.5 * Math.PI;
-					var endAngle = 0.3 * Math.PI;
-					var counterClockwise = false;
-
-					context.beginPath();
-					context.arc(x, y, radius, startAngle, endAngle, counterClockwise);
-					context.lineWidth = 15;
-
-					// line color
-					context.strokeStyle = 'white';
-					context.stroke();
-					context.closePath();
-
-					context.beginPath();
-					context.arc(x, y, radius, 0, 2 * Math.PI, counterClockwise);
-					context.lineWidth = 1;
-					context.stroke();
-			    </script>
+			    
     		<center>
     	</div>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-8">
     	<div class="row center-block center">
     		<center>
     			<img src="img/happy.png" />
@@ -289,7 +261,7 @@ input[type="text"], textarea {
     		<button class="btn-main btn-submit" onclick='mySwipe.next()'>SAVE</button>
 	    </div>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-8">
     	<div class="row center-block center">
     		<center>
     			<img src="img/happy.png" />
@@ -304,7 +276,7 @@ input[type="text"], textarea {
     		<button class="btn-main btn-submit" onclick='mySwipe.next()'>SAVE</button>
 	    </div>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-8">
     	<div class="row center-block center">
     	<center>
 			<img src="img/happy.png" />
@@ -318,7 +290,7 @@ input[type="text"], textarea {
 			<button class="btn-main btn-submit" onclick='mySwipe.next()'>SAVE</button>
 		</div>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-8">
     	<div class="row center-block center">
     		<center>
     			<img src="img/happy.png" />
@@ -331,7 +303,7 @@ input[type="text"], textarea {
     		<button class="btn-main btn-submit" onclick='mySwipe.next()'>SAVE</button>
 	    </div>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-8">
     	<div class="row center-block center">
     		<center>
     			<img src="img/happy.png" />
@@ -344,7 +316,7 @@ input[type="text"], textarea {
     		<button class="btn-main btn-submit share" onclick=''>SHARE YOUR LEVELS</button>
 	    </div>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-8">
     	<div class="row center-block center">
     		<center>
     			<img src="img/happy.png" />
@@ -391,5 +363,147 @@ function colorChange() {
 </script>
 <!-- Latest compiled and minified JavaScript -->
 <script src="js/bootstrap.js"></script>
+
+<script>
+	window.requestAnimFrame = (function(callback) {
+        return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+        function(callback) {
+          window.setTimeout(callback, 1000 / 60);
+        };
+  	})();
+
+    function animateTimer(radius, canvas) {
+		var context = canvas.getContext('2d');
+		var x = canvas.width / 2;
+		var y = canvas.height / 2;
+		var startAngle = 1.5 * Math.PI;
+		var endAngle = 0.3 * Math.PI;
+		var counterClockwise = false;
+
+		// update
+
+		// clear
+		context.clearRect(0, 0, canvas.width, canvas.height);	
+
+		context.beginPath();
+		context.arc(x, y, radius, startAngle, endAngle, counterClockwise);
+		context.lineWidth = 15;
+
+		// line color
+		context.strokeStyle = 'white';
+		context.stroke();
+		context.closePath();
+
+		//background stroke circle
+		context.beginPath();
+		context.arc(x, y, radius, 0, 2 * Math.PI, counterClockwise);
+		context.lineWidth = 1;
+		context.stroke();
+
+		// request new frame
+        requestAnimFrame(function() {
+          animateTimer(radius);
+        });
+    }
+
+    var jumpTimer = document.getElementById('jumpTimer');
+    var gratitudeTimer = document.getElementById('gratitudeTimer');
+    var fantasyTimer = document.getElementById('fantasyTimer');
+
+    animateTimer(150, jumpTimer);
+    animateTimer(150, gratitudeTimer);
+    animateTimer(40, fantasyTimer);
+
+    function animateLevels(radius, canvas) {
+		var context = canvas.getContext('2d');
+		var x = canvas.width / 2;
+		//var y = canvas.height / 2;
+		var startAngle = 1.5 * Math.PI;
+		var endAngle = 0.3 * Math.PI;
+		var counterClockwise = false;
+
+		// update
+
+		// clear
+		context.clearRect(0, 0, canvas.width, canvas.height);	
+
+		/* * * 1 * * */
+		context.beginPath();
+		context.arc(x, 50, radius, startAngle, endAngle, counterClockwise);
+		context.lineWidth = 15;
+
+		// line color
+		context.strokeStyle = 'white';
+		context.stroke();
+		context.closePath();
+
+		//background stroke circle
+		context.beginPath();
+		context.arc(x, 50, radius, 0, 2 * Math.PI, counterClockwise);
+		context.lineWidth = 1;
+		context.stroke();
+		context.closePath();
+
+		/* * * 2 * * */
+		context.beginPath();
+		context.arc(x, 150, radius, startAngle, endAngle, counterClockwise);
+		context.lineWidth = 15;
+
+		// line color
+		context.strokeStyle = 'white';
+		context.stroke();
+		context.closePath();
+
+		//background stroke circle
+		context.beginPath();
+		context.arc(x, 150, radius, 0, 2 * Math.PI, counterClockwise);
+		context.lineWidth = 1;
+		context.stroke();
+		context.closePath();
+
+
+		/* * * 3 * * */
+		context.beginPath();
+		context.arc(x, 250, radius, startAngle, endAngle, counterClockwise);
+		context.lineWidth = 15;
+
+		// line color
+		context.strokeStyle = 'white';
+		context.stroke();
+		context.closePath();
+
+		//background stroke circle
+		context.beginPath();
+		context.arc(x, 250, radius, 0, 2 * Math.PI, counterClockwise);
+		context.lineWidth = 1;
+		context.stroke();
+		context.closePath();
+
+
+		/* * * 4 * * */
+		context.beginPath();
+		context.arc(x, 350, radius, startAngle, endAngle, counterClockwise);
+		context.lineWidth = 15;
+
+		// line color
+		context.strokeStyle = 'white';
+		context.stroke();
+		context.closePath();
+
+		//background stroke circle
+		context.beginPath();
+		context.arc(x, 350, radius, 0, 2 * Math.PI, counterClockwise);
+		context.lineWidth = 1;
+		context.stroke();
+		context.closePath();
+
+		// request new frame
+        requestAnimFrame(function() {
+          animateLevels(radius);
+        });
+    }
+	
+	animateLevels(40, levels);
+</script>
 
 </body>
